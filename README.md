@@ -21,7 +21,13 @@ Wu, X., Mauranen, A., & Lei, L. (2020). Syntactic complexity in English as a lin
 Lu, X. (2010). Automatic analysis of syntactic complexity in second language writing. *International journal of corpus linguistics*, 15(4), 474-496.
 
 ### Readability
+
+Lei, L., & Yan, S. (2016). Readability and citations in information science: Evidence from abstracts and articles of four journals (2003–2012). *Scientometrics*, 108, 1155-1169.
+
 ### Sentiment Analysis
+
+Liu, D., & Lei, L. (2018). The appeal to political sentiment: An analysis of Donald Trump’s and Hillary Clinton’s speech themes and discourse strategies in the 2016 US presidential election. *Discourse, context & media*, 25, 143-152.
+
 ### Stylometrics
 
 McIntyre, D., & Walker, B. (2022). Using corpus linguistics to explore the language of poetry: a stylometric approach to Yeats' poems. In *The Routledge Handbook of Corpus Linguistics* (pp. 499-516). Routledge.
@@ -31,6 +37,8 @@ Van Hulle, D., & Kestemont, M. (2016). Periodizing Samuel Beckett's works: a sty
 Zhu, H., Lei, L., & Craig, H. (2021). Prose, verse and authorship in Dream of the Red Chamber: A stylometric analysis. *Journal of Quantitative Linguistics*, 28(4), 289-305.
 
 ### Bibliometrics
+
+Zhu, H., & Lei, L. (2022). The research trends of text classification studies (2000–2020): a bibliometric analysis. SAGE Open, 12(2), 21582440221089963.
 
 ### Dependency Grammar
 
@@ -45,6 +53,10 @@ Ouyang, J., & Jiang, J. (2018). Can the probability distribution of dependency d
 ### Information Entropy
 
 Zhu, H., & Lei, L. (2018). Is modern English becoming less inflectionally diversified? Evidence from entropy-based algorithm. *Lingua*, 216, 10-27.
+
+Zhu, H., & Lei, L. (2018). British cultural complexity: an entropy-based approach. *Journal of Quantitative Linguistics*, 25(2), 190-205.
+
+Shi, Yaqian, and Lei Lei. "Lexical richness and text length: An entropy-based perspective." *Journal of Quantitative Linguistics*, 29(1) (2022): 62-79.
 
 ### Machine Learning
 
