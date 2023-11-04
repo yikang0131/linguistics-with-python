@@ -1,3 +1,13 @@
+'''
+Yikang Liu, 2023
+
+This Python script is used to reproduce the results 
+in the paper ``Shi and Lei, 2021 on Lingua``.
+
+1. parse the annotated BNC corpus in XML format
+2. some demonstration on how to play with Pandas
+3. how to extract linguistic data of lexical use 
+'''
 import os
 import syllables
 import pandas as pd
@@ -34,6 +44,7 @@ def extract_soc_and_sent(xml_file):
     sents_with_soc = []
     utters = root.findall('.//u')
 
+    ### get word, lemma, and part-of-speech in utterrances
     for utter in utters:
         soc = speaker2soc[utter.get('who')]
         for sent in list(utter):
@@ -47,6 +58,7 @@ def extract_soc_and_sent(xml_file):
 def process_bnc_directory(bnc_root_dir):
     sents_with_soc = []
 
+    ### read through the BNC corpus
     for root, dirs, files in os.walk(bnc_root_dir):
         for filename in files:
             file_path = os.path.join(root, filename)
@@ -57,6 +69,8 @@ def process_bnc_directory(bnc_root_dir):
             except:
                 continue
     
+    ###################################### 
+    ### TODO: make this block more concise
     sents = [p[0] for p in sents_with_soc]
     soces = [p[1] for p in sents_with_soc]
 
@@ -66,6 +80,7 @@ def process_bnc_directory(bnc_root_dir):
         lemmas.extend([w[1] for w in s])
         poses.extend([w[2] for w in s])
         soces_.extend([soces[i] for _ in range(len(s))])
+    ######################################
 
     if not os.path.exists('tmp'): os.makedirs('tmp')
 
@@ -82,16 +97,21 @@ def compute_total_words(df):
 
 
 def compute_ttr(df):
+    '''
+    >>> df.token -> select the ``token`` column
+    >>> df.token.str -> get access to str methods
+    '''
     types_num = len(df.token.str.lower().unique())
     tokens_num = len(df)
     return round(types_num / tokens_num, 4)
 
 
 def compute_sttr(df, window_size=1000):
+    '''why we prefer stardard ttr instead of ttr?
+    sttr is less sensitive to total text length'''
     sttr_tmp = []
-    for i in range(len(df)):
-        if i % 1000:
-            continue
+    ### range(start,end,step)
+    for i in range(i, len(df), window_size):
         segment = df.iloc[i:i+window_size,]
         sttr_tmp.append(compute_ttr(segment))
     return round(sum(sttr_tmp) / len(sttr_tmp), 4)
@@ -99,18 +119,18 @@ def compute_sttr(df, window_size=1000):
 
 def compute_word_length(df):
     mean_wl = round(df.token.str.len().mean(), 4)
-    min_wl = int(df.token.str.len().min())
+    min_wl = int(df.token.str.len().min()) # use int to convert float to int
     max_wl = int(df.token.str.len().max())
     std_wl = round(df.token.str.len().std(), 4)
     return { 'mean': mean_wl, 'min': min_wl, 'max': max_wl, 'std': std_wl }
 
 
 def compute_syllable(df):
-    
     def my_estimate(token):
         token = str(token)
         return syllables.estimate(token)
 
+    ### every token in ``df.token`` is passed to ``my_estimate``
     s = df.token.apply(func=my_estimate)
     mean_s = round(s.mean(), 4)
     min_s = int(s.min())
@@ -120,6 +140,7 @@ def compute_syllable(df):
 
 
 def get_pos_tag(word_class):
+    ### check the tag set used in the BNC corpus annotation
     if word_class == 'NOUN': return 'NN'
     if word_class == 'VERB': return ('VV', 'VH')
     if word_class == 'ADJ': return 'AJ'
@@ -131,16 +152,14 @@ def get_pos_tag(word_class):
 
 def compute_raw_word_class(df, word_class):
     tag = get_pos_tag(word_class)
-    if isinstance(tag, tuple):
+    if isinstance(tag, tuple): # special case for ``VERB``
         return len(df[(df.pos.str[:2]==tag[0])|(df.pos.str[:2]==tag[1])])
     return len(df[df.pos.str[:2]==tag])
 
 
 def compute_normalised_word_class_(df, word_class, window_size=1000):
     wc_freq_tmp = []
-    for i in range(len(df)):
-        if i % 1000:
-            continue
+    for i in range(0, len(df), window_size):
         segment = df.iloc[i:i+window_size,]
         wc_freq_tmp.append(compute_raw_word_class(segment, word_class))
     return round(sum(wc_freq_tmp) / len(wc_freq_tmp), 4)
@@ -149,10 +168,12 @@ def compute_normalised_word_class_(df, word_class, window_size=1000):
 def compute_normalised_word_class(df, window_size=1000):
     wc_stats = {}
     for word_class in ['NOUN','VERB','ADJ','ADV','PRON','PREP','CONJ']:
-        wc_freq = compute_normalised_word_class_(df, word_class)
+        wc_freq = compute_normalised_word_class_(df, word_class, window_size)
         wc_stats[word_class] = wc_freq
     return wc_stats
 
+#################################################################################
+### read through these codes and experiment them in notebook to see how it works!
 
 def get_high_freq_lemmas_(df, word_class, threshold=28.57):
     tag = get_pos_tag(word_class)
@@ -167,31 +188,35 @@ def get_high_freq_lemmas_(df, word_class, threshold=28.57):
 def get_high_freq_lemmas(df, threshold=28.57):
     lemmas = {}
     for word_class in ['NOUN','VERB','ADJ','ADV','PRON','PREP','CONJ']:
-        hf_lemmas = get_high_freq_lemmas_(df, word_class)
+        hf_lemmas = get_high_freq_lemmas_(df, word_class, threshold)
         lemmas[word_class] = hf_lemmas
     return lemmas
 
+##################################################################################
 
 def analyze():
-    '''
-    AB C1 C2 DE
-    '''
+    '''AB C1 C2 DE'''
+    ### pd.concat(): concatenate a list of DataFrames into a big one
     high = pd.read_csv('tmp/AB.csv')
     mid = pd.concat([pd.read_csv('tmp/C1.csv'), pd.read_csv('tmp/C2.csv')])
     low = pd.read_csv('tmp/DE.csv')
     dfs = { 'low': low, 'mid': mid, 'high': high }
 
-    results = []
-    lemmas = {}
+    results, lemmas = [],{}
     for soc, df in dfs.items():
+        ######## social class and total words ########
         result = [soc]
         total_words = compute_total_words(df)
+        ########    compute lexical richness  ########
         ttr = compute_ttr(df)
         sttr = compute_sttr(df)
+        ######## word length and syllable num ########
         wl_stats = compute_word_length(df)
         s_stats = compute_syllable(df)
+        ########  word class and freq lemmas  ########
         wc_stats = compute_normalised_word_class(df)
         hf_lemmas = get_high_freq_lemmas(df)
+        ######## store the results to reuslts ########
         result.extend([total_words, ttr, sttr])
         result.extend([v for v in wl_stats.values()])
         result.extend([v for v in s_stats.values()])
@@ -203,9 +228,12 @@ def analyze():
 
 
 def save(results, lemmas):
+    '''save the results and frquently used lemmas'''
+    ### use a string to store the column names, which is split and passed to DataFrame
     columns = 'soc total_word ttr sttr word_len_mean word_len_min word_len_max word_length_std syl_mean syl_min syl_max syl_std noun_norm_freq verb_norm_freq adj_norm_freq adv_norm_freq pron_norm_freq prep_norm_freq conj_norm_freq'
     pd.DataFrame(data=results, columns=columns.split()).to_csv('tmp/results.csv', index=False)
     if not os.path.exists('tmp/lemmas'): os.makedirs('tmp/lemmas')
+    
     for soc, lemma_ in lemmas.items():
         for word_class, lemma in lemma_.items():
             with open(f'tmp/lemmas/{soc}.{word_class}.txt', 'w') as fout:
@@ -214,11 +242,10 @@ def save(results, lemmas):
 
 def main():
     # res = extract_soc_and_sent('../data/bnc/Texts/K/KB/KB0.xml')
-    # process_bnc_directory('../data/bnc/Texts')
+    process_bnc_directory('../data/bnc/Texts')
     results, lemmas = analyze()
     # print(results)
     save(results, lemmas)
-
 
 
 if __name__ == '__main__':
