@@ -22,6 +22,8 @@ Lu, X. (2010). Automatic analysis of syntactic complexity in second language wri
 
 ### Readability
 
+TODO: find another reference
+
 Lei, L., & Yan, S. (2016). Readability and citations in information science: Evidence from abstracts and articles of four journals (2003–2012). *Scientometrics*, 108, 1155-1169.
 
 ### Sentiment Analysis
@@ -37,6 +39,8 @@ Van Hulle, D., & Kestemont, M. (2016). Periodizing Samuel Beckett's works: a sty
 Zhu, H., Lei, L., & Craig, H. (2021). Prose, verse and authorship in Dream of the Red Chamber: A stylometric analysis. *Journal of Quantitative Linguistics*, 28(4), 289-305.
 
 ### Bibliometrics
+
+TODO: remove
 
 Zhu, H., & Lei, L. (2022). The research trends of text classification studies (2000–2020): a bibliometric analysis. SAGE Open, 12(2), 21582440221089963.
 
@@ -60,6 +64,12 @@ Shi, Yaqian, and Lei Lei. "Lexical richness and text length: An entropy-based pe
 
 ### Machine Learning
 
+TODO: remove, too difficult
+
 Hu, H., & Kübler, S. (2021). Investigating translated Chinese and its variants using machine learning. *Natural Language Engineering*, 27(3), 339-372.
+
+### Word Embeddings
+
+TODO: add this unit
 
 ### Language Model
