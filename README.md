@@ -1,11 +1,14 @@
 # Python语言学应用：从计量到计算
-## 文件结构
-```
-|-- data
-|-- notebooks
-|-- scripts
-```
-## 文献列表
+## Corpora
+- BNC
+- WrELFA
+- COCA
+- US presidency archive
+- Yeats collections
+- UD
+- ArguGPT
+
+## References
 ### Lexical Richness
 
 Shi, Y., & Lei, L. (2021). Lexical use and social class: A study on lexical richness, word length, and word class in spoken English. *Lingua*, 262, 103155.
