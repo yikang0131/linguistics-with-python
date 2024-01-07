@@ -56,11 +56,15 @@ Zhu, H., & Lei, L. (2018). Is modern English becoming less inflectionally divers
 
 Zhu, H., & Lei, L. (2018). British cultural complexity: an entropy-based approach. *Journal of Quantitative Linguistics*, 25(2), 190-205.
 
-Shi, Yaqian, and Lei Lei. "Lexical richness and text length: An entropy-based perspective." *Journal of Quantitative Linguistics*, 29(1) (2022): 62-79.
+Shi, Yaqian, and Lei Lei. Lexical richness and text length: An entropy-based perspective. *Journal of Quantitative Linguistics*, 29(1) (2022): 62-79.
 
 ### Word Embeddings
 
-TODO: add this unit
+Boleda, G. (2020). Distributional semantics and linguistic theory. *Annual Review of Linguistics*, 6, 213-234.
+
+Tang, X. (2018). A state-of-the-art of semantic change computation. *Natural Language Engineering*, 24(5), 649-676.
+
+Hu, R., Li, S., & Liang, S. (2019, July). Diachronic sense modeling with deep contextualized word embeddings: An ecological view. In *Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics* (pp. 3899-3908).
 
 ### Language Model
 
