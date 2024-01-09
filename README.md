@@ -2,10 +2,10 @@
 ## Corpora
 - BNC
 - WrELFA
-- COCA
 - US presidency archive
 - Yeats collections
 - UD
+- Project Gutenburg
 
 ## References
 ### Lexical Richness
@@ -21,6 +21,8 @@ Tabari, M. A., Lu, X., & Wang, Y. (2023). The effects of task complexity on lexi
 Wu, X., Mauranen, A., & Lei, L. (2020). Syntactic complexity in English as a lingua franca academic writing. *Journal of English for Academic Purposes*, 43, 100798.
 
 Lu, X. (2010). Automatic analysis of syntactic complexity in second language writing. *International journal of corpus linguistics*, 15(4), 474-496.
+
+Hunt, K. W. (1970). Do sentences in the second language grow like those in the first?. *Tesol Quarterly*, 195-202.
 
 ### Readability
 
@@ -39,6 +41,8 @@ McIntyre, D., & Walker, B. (2022). Using corpus linguistics to explore the langu
 Van Hulle, D., & Kestemont, M. (2016). Periodizing Samuel Beckett's works: a stylochronometric approach. *Style*, 50(2), 172-202.
 
 Zhu, H., Lei, L., & Craig, H. (2021). Prose, verse and authorship in Dream of the Red Chamber: A stylometric analysis. *Journal of Quantitative Linguistics*, 28(4), 289-305.
+
+Burrows, J. (2002). ‘Delta’: a measure of stylistic difference and a guide to likely authorship. *Literary and linguistic computing*, 17(3), 267-287.
 
 ### Dependency Grammar
 
