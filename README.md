@@ -1,11 +1,46 @@
 # Python语言学应用：从计量到计算
+## Course structure
+1. Lexical Richness: 1) process BNC corpus (XML format), 2) extract lexical features from BNC, and 3) analyze linguistic data with pandas
+2. Syntactic Complexity: 1) introduction to T-unit, 2) pre-process raw corpus, and 3) usage of neosca
+3. Readability: 1) introduction to measurements of readability, 2) introduction to coh-metrix, and 3) linguistic features extraction from raw text
+4. Sentiment Analysis: 1) corpus building with web scraper, 2) sentiment analysis, and 3) chi-square test
+5. Stylometrics: 1) introduction to stylometrics (digital humanities), 2) an example of hierarchical clustering with Yeats' poems
+6. Dependency Grammar: 1) introduction to dependency grammar and UD treebanks, 2) process UD treebanks, and 3) analysis of treebanks and visualization
+7. Information Entropy: 1) introduction to information theory, and 2) implementation of different algorithms to compute information entropy
+8. Word Embeddings: 1) introduction to distributional semantics, and 2) usage of word embeddings
+9. Language Model: 1) introduction to principles of language model from N-gram language model to GPT (large pre-trained language model)
+10. TBD
+
 ## Corpora
-- BNC
-- WrELFA
-- US presidency archive
-- Yeats collections
-- UD
-- Project Gutenburg
+- [BNC](http://www.natcorp.ox.ac.uk/): free download, xml annotated
+- [WrELFA](https://www.helsinki.fi/en/researchgroups/english-as-a-lingua-franca-in-academic-settings/research/wrelfa-corpus): access via email
+- [US presidency archive](https://www.presidency.ucsb.edu/): access via web scraper
+- Yeats collections: access via web scraper
+- [UD](https://universaldependencies.org/): free download
+- [Project Gutenburg](https://www.gutenberg.org/): free dowload
+- [Chinese pre-trained word embeddings](https://github.com/Embedding/Chinese-Word-Vectors): free download
+- [Glove pre-trained word embeddings](https://nlp.stanford.edu/projects/glove/): free download
+
+## Tools
+### Text processing
+- ``spaCy``: dependency parsing 
+- ``stanza``: preprocess CoNLL format in UD
+- ``nltk``: process syntax tree (constituency), n-gram
+- ``gensim``: process word embeddings
+- ``neosca``: syntactic complexity
+- ``StanfordParser``: consistuency parsing (this one is not a Python package)
+- ``readability``: readability
+- ``textblob``: sentiment analysis
+
+### Data analysis and visualization
+- ``pandas``: data manipulation
+- ``scipy``: statistics
+- ``numpy``: numerical computing
+- ``scikit-learn``: data reduction (PCA, TSNE)
+- ``matplotlib``: data visualization
+
+### Corpus building
+- ``web scraper``: google chrome extension
 
 ## References
 ### Lexical Richness
@@ -26,9 +61,9 @@ Hunt, K. W. (1970). Do sentences in the second language grow like those in the f
 
 ### Readability
 
-TODO: find another reference
+Crossley, S. A., Greenfield, J., & McNamara, D. S. (2008). Assessing text readability using cognitively based indices. *Tesol Quarterly*, 42(3), 475-493.
 
-Lei, L., & Yan, S. (2016). Readability and citations in information science: Evidence from abstracts and articles of four journals (2003–2012). *Scientometrics*, 108, 1155-1169.
+Graesser, A. C., McNamara, D. S., Louwerse, M. M., & Cai, Z. (2004). Coh-Metrix: Analysis of text on cohesion and language. *Behavior research methods*, instruments, & computers, 36(2), 193-202.
 
 ### Sentiment Analysis
 
@@ -56,11 +91,11 @@ Ouyang, J., & Jiang, J. (2018). Can the probability distribution of dependency d
 
 ### Information Entropy
 
+Shi, Yaqian, and Lei Lei. Lexical richness and text length: An entropy-based perspective. *Journal of Quantitative Linguistics*, 29(1) (2022): 62-79.
+
 Zhu, H., & Lei, L. (2018). Is modern English becoming less inflectionally diversified? Evidence from entropy-based algorithm. *Lingua*, 216, 10-27.
 
 Zhu, H., & Lei, L. (2018). British cultural complexity: an entropy-based approach. *Journal of Quantitative Linguistics*, 25(2), 190-205.
-
-Shi, Yaqian, and Lei Lei. Lexical richness and text length: An entropy-based perspective. *Journal of Quantitative Linguistics*, 29(1) (2022): 62-79.
 
 ### Word Embeddings
 
@@ -73,3 +108,7 @@ Hu, R., Li, S., & Liang, S. (2019, July). Diachronic sense modeling with deep co
 ### Language Model
 
 Preliminaries on language model
+
+[Stanford cs224n](https://web.stanford.edu/class/cs224n/)
+
+[Speech and language processing](https://web.stanford.edu/~jurafsky/slp3/)
